@@ -1,0 +1,28 @@
+<p>areas works!</p>
+<div [hidden]="hideCountries">
+  <h1>Explore {{ areaName }}</h1>
+  Number of Countries to visit:
+  <div [innerText]="numberOfCountries"></div>
+  <!--or common javascript document.getElementById('numberOfCountries').innerText = numberOfCountries; -->
+  <!--</div>-->
+
+  <!--shows total amount of Countries in te region-->
+  <!--{{ area?.totalyContries ?? "No areas" }}-->
+  <button class="button" (click)="toggle()">Toggle</button>
+</div>
+
+<div *ngIf="area.totalyContries > 0">
+  <mfa-areas-list
+    [regions]="areaList"
+    [tableTitle]="title"
+    (selectedArea)="selectArea($event)"
+  ></mfa-areas-list>
+</div>
+
+<div *ngIf="selectedArea">
+  {{ selectedArea | json }}
+</div>
+
+<div>
+  <button (click)="addArea()">Add Area</button>
+</div>

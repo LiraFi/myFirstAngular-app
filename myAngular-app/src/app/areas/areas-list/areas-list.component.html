@@ -1,0 +1,34 @@
+<mfa-header></mfa-header>
+<h2>{{ tableTitle }}</h2>
+<table class="table">
+  <tr>
+    <th>Index</th>
+    <th>Odd/Even</th>
+    <th>Area Name</th>
+    <th>Area Number</th>
+    <th>Capitals</th>
+    <th>Population</th>
+    <th>Currency</th>
+    <th>Image</th>
+    <th>Time</th>
+    <th>Select Area</th>
+  </tr>
+  <tr
+    [ngClass]="e ? 'odd' : 'even'"
+    *ngFor="let area of regions; let e = even; let o = odd; let i = index"
+  >
+    <td>{{ i }}</td>
+    <td>{{ e ? "Odd" : "Even" }}</td>
+    <td>{{ area.areaName }}</td>
+    <td>{{ area.areaNumber }}</td>
+    <td>{{ area.capitals | titlecase }}</td>
+    <td>{{ area.population }}</td>
+    <!--<td>{{ area.population | percent }}</td>-->
+    <td>{{ area.currency | currency : "EUR" }}</td>
+    <td>{{ area.img }}</td>
+    <td>{{ area.timeZone | date : "longTime" }}</td>
+    <td>
+      <button class="btn btn-primary" (click)="selectArea(area)">Select</button>
+    </td>
+  </tr>
+</table>

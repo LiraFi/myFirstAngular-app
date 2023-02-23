@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+.even {
+  background-color: green;
+  color: whitesmoke;
+}
+
+.odd {
+  background-color: yellow;
+  color: black;
+}
+
+.button {
+  border-radius: 10%;
+  background-color: rgb(247, 244, 77);
+  color: black;
+}
