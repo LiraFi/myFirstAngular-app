@@ -9,6 +9,7 @@ import { AreasListComponent } from './areas/areas-list/areas-list.component';
 import { HeaderComponent } from './header/header.component';
 import { ContainerComponent } from './container/container.component';
 import { CitizentComponent } from './citizent/citizent.component';
+import { APP_CONFIG, APP_SERVICE_CONFIG } from './AppConfig/appconfig.service';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,10 @@ import { CitizentComponent } from './citizent/citizent.component';
     AreasListComponent,
     HeaderComponent,
     ContainerComponent,
-    CitizentComponent
+    CitizentComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+  providers: [{ provide: APP_SERVICE_CONFIG, useValue: APP_CONFIG }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

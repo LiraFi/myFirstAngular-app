@@ -1,15 +1,12 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnInit,
-  QueryList,
   ViewChild,
-  ViewChildren,
-  ViewContainerRef,
+  Inject,
 } from '@angular/core';
-import { AreasComponent } from './areas/areas.component';
-import { HeaderComponent } from './header/header.component';
+import { LoggerService } from './logger.service';
+import { localStorageToken } from './localstorage.token';
 
 @Component({
   selector: 'mfa-root',
@@ -25,8 +22,19 @@ export class AppComponent implements OnInit {
   title = 'myFirstAngular-app';
   @ViewChild('name', { static: true }) name!: ElementRef;
 
+  //constructor(@Optional() private loggerService: LoggerService) {} //@Optional()decorator used in case servise is isolated, to skip an error
+  constructor(
+    private loggerService: LoggerService,
+    @Inject(localStorageToken) private localStorage: Storage
+  ) {}
+
   ngOnInit() {
+    //this.loggerService?.log('AppComponent.ngOnInit()');
+    this.loggerService.log('AppComponent.ngOnInit()');
     this.name.nativeElement.innerText = 'Regions of Europe';
+
+    // adding value for localStorage
+    this.localStorage.setItem('name', 'South-West');
   }
 
   /*  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;

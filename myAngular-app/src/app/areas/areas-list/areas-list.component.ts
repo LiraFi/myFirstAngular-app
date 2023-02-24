@@ -4,6 +4,7 @@ import {
   EventEmitter,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   Output,
   SimpleChanges,
@@ -17,7 +18,7 @@ import { AreasList } from '../areas';
   styleUrls: ['./areas-list.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AreasListComponent implements OnInit, OnChanges {
+export class AreasListComponent implements OnInit, OnChanges, OnDestroy {
   @Input() regions: AreasList[] = [];
 
   @Input() tableTitle: string = '';
@@ -38,5 +39,9 @@ export class AreasListComponent implements OnInit, OnChanges {
 
   selectArea(area: AreasList) {
     this.selectedArea.emit(area);
+  }
+
+  ngOnDestroy(): void {
+    console.log('on destroy is called!');
   }
 }

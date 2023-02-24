@@ -8,13 +8,13 @@
 
   <!--shows total amount of Countries in te region-->
   <!--{{ area?.totalyContries ?? "No areas" }}-->
-  <button class="button" (click)="toggle()">Toggle</button>
 </div>
+<button class="button" (click)="toggle()">Toggle</button>
 
-<div *ngIf="area.totalyContries > 0">
+<div *ngIf="hideCountries">
   <mfa-areas-list
     [regions]="areaList"
-    [tableTitle]="title"
+    [tableTitle]="tableTitle"
     (selectedArea)="selectArea($event)"
   ></mfa-areas-list>
 </div>

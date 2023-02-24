@@ -1,14 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Self } from '@angular/core';
+import { AreasService } from '../areas/services/areas.service';
 
 @Component({
   selector: 'mfa-citizent',
   templateUrl: './citizent.component.html',
   styleUrls: ['./citizent.component.css'],
+  //providers: [AreasService],
 })
 export class CitizentComponent implements OnInit {
-  citizentName: string = '';
+  citizentName: string = 'Alex';
 
-  constructor() {}
+  //injected areasService
+  constructor(private areasService: AreasService) {}
 
   ngOnInit(): void {}
 }
